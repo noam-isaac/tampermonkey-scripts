@@ -44,4 +44,7 @@
 
 	// Start observing the document with the configured parameters
 	observer.observe(document, { childList: true, subtree: true });
+
+	// Also run every 1 second
+	setInterval(removeAds, 1000);
 })();

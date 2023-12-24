@@ -12,19 +12,24 @@
 (function () {
 	'use strict';
 
-	function clickButton() {
-		const button = document.querySelector('.continue-button');
-		if (button) {
-			button.click();
-			console.log('Clicked button', button);
-		}
+	function clickButtons() {
+		const buttons = [
+			...document.querySelectorAll('.continue-button'),
+			...document.querySelectorAll('.ad_close'),
+		];
+		buttons.forEach((button) => {
+			if (button.click) {
+				button.click();
+				console.log('Clicked button', button);
+			}
+		});
 	}
 
 	// Click the button immediately if it exists
-	clickButton();
+	clickButtons();
 
 	// Create a new observer
-	const observer = new MutationObserver(clickButton);
+	const observer = new MutationObserver(clickButtons);
 
 	// Start observing the document with the configured parameters
 	observer.observe(document, { childList: true, subtree: true });
